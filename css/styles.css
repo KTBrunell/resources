@@ -1,0 +1,326 @@
+/* ============================
+   RESET & BASE STYLES (Mobile First)
+   ============================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe Ui', Arial, sans-serif;
+  line-height: 1.5;
+  color: #333;
+  background: #f7f5f2;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #95444E;
+}
+
+/* ============================
+   HEADER
+   ============================ */
+header {
+  background: #95444E;
+  padding: 12px 16px;
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand {
+  flex-grow: 1;
+}
+
+.brand strong {
+  display: block;
+  color: #fff;
+  font-size: 22px;
+}
+
+.brand span {
+  display: block;
+  color: rgba(255,255,255,.85);
+  font-size: 13px;
+}
+
+/* ============================
+   HAMBURGER BUTTON — visible only on smartphones
+   ============================ */
+.hamburger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.hamburger-btn span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animate into an "X" when menu is open */
+.hamburger-btn.active span:nth-child(1) {
+  transform: translateY(9.5px) rotate(45deg);
+}
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-btn.active span:nth-child(3) {
+  transform: translateY(-9.5px) rotate(-45deg);
+}
+
+/* ============================
+   MAIN LAYOUT — Mobile: stacked, aside collapsible
+   ============================ */
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+aside {
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+
+  /* Collapsed by default on mobile */
+  max-height: 0;
+  padding: 0 16px;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, padding 0.35s ease, opacity 0.25s ease;
+}
+
+aside.nav-open {
+  max-height: 2000px; /* large enough to fit full content */
+  padding: 16px;
+  opacity: 1;
+}
+
+.nav-placeholder-img {
+  margin: 0 auto 10px auto;
+  border-radius: 6px;
+}
+
+.nav-section {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.nav-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.nav-section ul {
+  list-style: none;
+ 
+  padding-left: 4px;
+}
+
+.nav-section li {
+  padding: 4px 0;
+  font-size: 14px;
+}
+
+}
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.nav-links a {
+  font-size: 14px;
+}
+
+/* ============================
+   CONTENT / MASONRY CARDS — Mobile: 1 column
+   ============================ */
+.content {
+  width: 100%;
+}
+
+.aligned-header {
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+.masonry {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.card-title {
+  font-weight: bold;
+  padding: 10px 12px 0 12px;
+  color: #95444E;
+  font-size: 16px;
+}
+
+.card-body {
+  padding: 8px 12px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-text {
+  font-size: 13px;
+  margin-bottom: 8px;
+  flex-grow: 1;
+}
+
+.source {
+  font-size: 13px;
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+footer {
+  text-align: center;
+  padding: 16px;
+  background: #eee;
+  margin-top: 24px;
+}
+
+/* ============================
+   TABLET: 600px – 899px
+   Sidebar visible, 2 columns of cards
+   ============================ */
+@media (min-width: 600px) {
+  .hamburger-btn {
+    display: none;
+  }
+
+  .layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  aside {
+    flex: 0 0 220px;
+    max-height: none;
+    padding: 16px;
+    opacity: 1;
+    overflow: visible;
+    position: sticky;
+    top: 16px;
+  }
+
+  .content {
+    flex: 1;
+  }
+
+  .masonry {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  main {
+    padding: 20px;
+  }
+}
+
+/* ============================
+   LAPTOP: 900px – 1199px
+   3 columns of cards
+   ============================ */
+@media (min-width: 900px) {
+  aside {
+    flex: 0 0 260px;
+  }
+
+  .masonry {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .aligned-header {
+    font-size: 24px;
+  }
+
+/* ============================
+   DESKTOP: 1200px and up
+   4 columns of cards
+   ============================ */
+@media (min-width: 1200px) {
+  aside {
+    flex: 0 0 300px;
+  }
+
+  .masonry {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  main {
+    padding: 32px 20px;
+  }
+
+  .aligned-header {
+    font-size: 28px;
+  }
+
+  .card-text {
+    font-size: 15px;
+  }
